@@ -57,7 +57,7 @@ int PoissonReconLib::Parameters::GetMaxThreadCount()
 }
 
 PoissonReconLib::Parameters::Parameters()
-	: threads(GetMaxThreadCount())
+	: threads(std::max(1, GetMaxThreadCount() - 1)) // always leave one thread/core to let the application breath
 {
 }
 
